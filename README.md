@@ -175,11 +175,17 @@ The user can continually enter `exit` as the feedback to let the iterations run 
 
 The user can provide feedback/direction on the process to either the programmer or the reviewer, although this functionality has not been thoroughly tested.
 
+The iteration will begin with a chat with the programmer, passing in the Plan, and if not the first iteration, the last code iteration and the last review comments as context.
+
 Replying `exit` to the programmer will result in a function call to format and write the coders last message to a script file with incrementing version numbers.
 
 After this, the reviewer will be presented the Plan, the latest code, and be asked to make comments/critics on the code direction. If it concludes another iteration is required, it will end with `ITERATE`. If it concludes testing is required, it will end with `TEST`.
 
+Replying `exit` to the reviewer will end the current iteration. If `n_code_iterations` has not been exceeded, another iteration will begin by starting a chat with the programmer, passing in the Plan, the last code iteration, and the last review comments as context.
 
+## Testing an Iteration
+
+The user is able to run any script iterations in the `working_dir` while the iterative process is running. Feedback from the code execution can be provided by the user to either the programmer or the reviewer to incorporate into the program.
 
 
 
