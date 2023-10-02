@@ -1,9 +1,15 @@
 import autogen
 import os
 from AndyTools import ManualManager, ManualGroupChat
-# config_list = autogen.config_list_from_json("OAI_CONFIG_LIST")
 
+# llm model 
 llm_model = 'gpt-3.5-turbo'#'gpt-3.5-turbo' 'gpt-4-0613'
+
+# working directory 
+working_dir = 'Coding_WorkDir/'
+
+# number of iterations before stopping (can always exit early or resume later)
+n_code_iterations = 10
 
 config_list = [
     {
@@ -15,10 +21,6 @@ config_list = [
 
 
 llm_config = {"config_list": config_list, "seed": 42}
-
-working_dir = 'Coding_WorkDir/'
-
-n_code_iterations = 10
 
 gpt_config = {
     "seed": 42,  # change the seed for different trials
