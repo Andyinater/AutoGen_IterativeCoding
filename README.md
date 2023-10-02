@@ -47,6 +47,14 @@ The reviewer will then be presented with the Plan and the content of the most re
 
 The Manager can also test the code if desired at this point and provide feeback to the reviewer to include in the comments.
 
+# Getting Started
+
+The author assumes you have [installed AutoGen](https://github.com/microsoft/autogen#installation) and have it running on your system. 
+
+## Preparing the Work Space
+
+Before you begin, be sure the directory listed in `working_dir`
+
 
 
 
