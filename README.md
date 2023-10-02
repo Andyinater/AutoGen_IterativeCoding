@@ -8,10 +8,6 @@ This project is the result from an extension of the paradigm demonstrated in Aut
 
 Currently this Repo only works to produce python code. With some work, this can be adapted.
 
-# Example Iterative Code Results
-(MAKE SOME CONTENT FOR AN EXAMPLE)
-
-
 # How it Works
 The program runs in two phases: the Planning Phase, and the Iterative Phase.
 
