@@ -9,7 +9,7 @@ This project results from an extension of the paradigm demonstrated in [AutoGen_
 Currently this Repo only works to produce python code. With some work, this can be adapted.
 
 # How it Works
-The program runs in two phases: the Planning Phase, and the Iterative Phase.
+The program runs in two phases: the Planning Phase, and the Iteration Phase.
 
 ## Planning Phase
 The planning phase consists of a chat between the human user (Manager) and an AI Planner assistant (Planner). The Manager is first prompted:
@@ -24,7 +24,7 @@ The Planner will then create a list of functional requirements that define a suc
 
 This concludes the Planning Phase.
 
-## Iterative Phase
+## Iteration Phase
 The iterative phase consists of individual chats between the Manager and either the Programmer, or the Reviewer.
 
 ### Iteration 0
