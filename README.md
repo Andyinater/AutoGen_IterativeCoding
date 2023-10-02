@@ -2,7 +2,7 @@
 This repository demonstrates how a simple iterative coding loop, with history and resume capability, can be can be implemented in the AutoGen Framework. 
 
 # Overview
-This project is the result from an extension of the paradigm demonstrated in AutoGen_MemoryManager(MAKE THIS A LINK), where allowing an agent to have a fixed, trustworthy memory relieves the cognitive burden that would otherwise be necessary to achieve the same effect. The inspiratiom for this work comes from the author's personal struggles in achieving performant code from the AutoGen Examples for use-cases sufficiently different from those in the example. While in it's current state this flow is able to achieve better results on cases that failed in the examples, this Repo should also serve as an example of a more generic code production workflow.
+This project is the result from an extension of the paradigm demonstrated in AutoGen_MemoryManager(MAKE THIS A LINK), where allowing an agent to have a fixed, trustworthy memory relieves the cognitive burden that would otherwise be necessary to achieve the desired effect. The inspiratiom for this work comes from the author's personal struggles in achieving performant code from the AutoGen Examples for use-cases sufficiently different than those in the example. While in its current state this flow is able to achieve better results on cases that failed in the examples, this Repo should also serve as an example of a more generic code production workflow.
 
 (CONSIDER A DIAGRAM SHOWING THE BREAKDOWN OF STEPS)
 
@@ -29,25 +29,25 @@ The Planner will then create a list of functional requirements that define a suc
 This concludes the Planning Phase.
 
 ## Iterative Phase
-The iterative phase consists of individual chats between the Manager and either the Coder, or the Reviewer.
+The iterative phase consists of individual chats between the Manager and either the Programmer, or the Reviewer.
 
 ### Iteration 0
-If coming directly from the planning phase, the Iteration phase will begin with the Coder producing the first attempt at satisfying the plan. 
+If coming directly from the planning phase, the Iteration phase will begin with the Programmer producing the first attempt at satisfying the plan. 
 
-The Coder's output will be recorded to a python script file in the working directory, starting at `script_v1.py`.
+The Programmer's output will be recorded to a python script file in the working directory, starting at `script_v1.py`.
 
 The reviewer will then be presented with the Plan and the content of the most recent script, and is asked to evaluate the code and produce a list of criticisms/comments to be used to guide the next iteration.
 
-The Manager can also test the code if desired at this point and provide feeback to the reviewer to include in the comments.
+The Manager can also test the code if desired and provide feeback to the reviewer or programmer.
 
 ### Iteration n
 After the first iteration, the main iterative loop begins.
 
-The Coder will be presented with the Plan, the latest code iteration, and the latest reviewer comments. They will then produce another iteration of the code, attempting to resolve the reviewer comments while also adhering to the plan.
+The programmer will be presented with the Plan, the latest code iteration, and the latest reviewer comments. They will then produce another iteration of the code, attempting to resolve the reviewer comments while also adhering to the plan.
 
 The reviewer will then be presented with the Plan and the content of the most recent script, and is asked to evaluate the code and produce a list of criticisms/comments to be used to guide the next iteration.
 
-The Manager can also test the code if desired at this point and provide feeback to the reviewer to include in the comments.
+The Manager can also test the code if desired and provide feeback to the reviewer or programmer.
 
 # Getting Started
 
@@ -55,15 +55,15 @@ The author assumes you have [installed AutoGen](https://github.com/microsoft/aut
 
 ## Preparing the Work Space
 
-Before you begin, be sure the directory defined in `working_dir` exists in the active director - this is where the Plan will be stored, as well as all script iterations.
+Before you begin, be sure the directory defined in `working_dir` exists in the active directory - this is where the Plan will be stored, as well as all script iterations.
 
-Also, be sure the file `AndyTools.py` is in the same directory as `IterativeCoding.py` - this contains overridden AutoGen GroupChat and GroupChatManager classes to allow manual control of group chat speakers.
+Also, be sure the file `AndyTools.py` is in the same directory as `IterativeCoding.py` - this contains overridden AutoGen `GroupChat` and `GroupChatManager` classes to allow manual control of group chat speakers.
 
 ## Starting a Fresh Project
 
 To start a fresh project, be sure the `working_dir` contains no files.
 
-Run the program with `python IterativeCoding.py`
+Start the program with `python IterativeCoding.py`
 
 ### Running the Planning Phase
 
@@ -85,7 +85,7 @@ The user should enter planner to allow the planner to produce an initial plan:
 
 After the planner responds, the user should direct the manager to speak next. If the user desires other features be included, or has any problems with the plan, they can tell the planner what changes they desire. After this, the user should allow the planner to speak again.
 
-Once the planner returns a plan that is acceptable, the user should say "sounds good" through the manager. The user should then direct the `recorder` to speak next. The recorder will should make a function call to write the Plan to the working directory, finalizing the application requirements. The `manager` must be used to execute the function call by sending a blank response (auto-reply). The manager must then exit the conversation to conclude the planning phase. 
+Once the planner returns a plan that is acceptable, the user should say "sounds good" through the manager. The user should then direct the `recorder` to speak next. The recorder will make a function call to write the Plan to the working directory, finalizing the application requirements. The `manager` must be used to execute the function call by sending a blank response (auto-reply). The manager must then exit the conversation to conclude the planning phase. 
 
 A full planning phase will run something like this:
 
@@ -163,11 +163,12 @@ None
 Who speaks next:manager
 Provide feedback to chat_manager. Press enter to skip and use auto-reply, or type 'exit' to end the conversation: exit
 ```
-At this point the terminal should be released. The iterative phase can now begin.
+
+At this point the terminal should be released. The iteration phase can now begin.
 
 ## Iterating a Project
 
-Whether starting the iteration phase directly after planning or resuming it after stopping, the iteration phase runs the same (minus the first iteration - no review comments yet)
+Whether starting the iteration phase directly after planning or resuming it after stopping a previous run, the iteration phase runs the same.
 
 Begin the iteration phase by calling the main script again: `python IterativeCoding.py`
 
@@ -175,21 +176,17 @@ The user can continually enter `exit` as the feedback to let the iterations run 
 
 The user can provide feedback/direction on the process to either the programmer or the reviewer, although this functionality has not been thoroughly tested.
 
-The iteration will begin with a chat with the programmer, passing in the Plan, and if not the first iteration, the last code iteration and the last review comments as context.
+The iteration will begin with a chat with the programmer, passing in the Plan, and if not the first iteration, the last code iteration and the last review comments as well for context.
 
-Replying `exit` to the programmer will result in a function call to format and write the coders last message to a script file with incrementing version numbers.
+Replying `exit` to the programmer will result in a function call to format and write the programmers last message to a script file with incrementing version numbers.
 
-After this, the reviewer will be presented the Plan, the latest code, and be asked to make comments/critics on the code direction. If it concludes another iteration is required, it will end with `ITERATE`. If it concludes testing is required, it will end with `TEST`.
+After this, the reviewer will be presented with the Plan and the latest code and be asked to make comments/criticisms on the code direction. If it concludes another iteration is required, it will end with `ITERATE`. If it concludes testing is required, it will end with `TEST`.
 
-Replying `exit` to the reviewer will end the current iteration. If `n_code_iterations` has not been exceeded, another iteration will begin by starting a chat with the programmer, passing in the Plan, the last code iteration, and the last review comments as context.
+Replying `exit` to the reviewer will end the current iteration. If `n_code_iterations` has not been exceeded, another iteration will begin by starting a chat with the programmer, passing in the Plan, the last code iteration, and the last code review comments as context.
 
 ## Testing an Iteration
 
 The user is able to run any script iterations in the `working_dir` while the iterative process is running. Feedback from the code execution can be provided by the user to either the programmer or the reviewer to incorporate into the program.
-
-
-
-
 
 # Known Issues
 
