@@ -36,7 +36,7 @@ The Coder's output will be recorded to a python script file in the working direc
 
 The reviewer will then be presented with the Plan and the content of the most recent script, and is asked to evaluate the code and produce a list of criticisms/comments to be used to guide the next iteration.
 
-The Manager can also test the code if desired at this point and provide feeback if desired.
+The Manager can also test the code if desired at this point and provide feeback to the reviewer to include in the comments.
 
 ### Iteration n
 After the first iteration, the main iterative loop begins.
@@ -45,7 +45,7 @@ The Coder will be presented with the Plan, the latest code iteration, and the la
 
 The reviewer will then be presented with the Plan and the content of the most recent script, and is asked to evaluate the code and produce a list of criticisms/comments to be used to guide the next iteration.
 
-The Manager can also test the code if desired at this point and provide feeback.
+The Manager can also test the code if desired at this point and provide feeback to the reviewer to include in the comments.
 
 
 
