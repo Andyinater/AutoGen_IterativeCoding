@@ -66,10 +66,10 @@ Start the program with `python IterativeCoding.py`
 The planning phase will begin with the User entering the desired application:
 > Make a python app that writes the current time to an analog clock.
 
-After hitting Enter, the User will be prompted to direct who speaks next:
+After hitting `Enter`, the User will be prompted to direct who speaks next:
 >Who speaks next: planner
 
-The user should enter planner to allow the planner to produce an initial plan:
+The user should enter `planner` to allow the planner to produce an initial plan:
 >Plan:
 >1. Create a graphical user interface (GUI) for the analog clock.
 >2. Implement a function to retrieve the current time.
