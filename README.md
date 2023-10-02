@@ -194,6 +194,8 @@ Due to above issue, reviewer may perpetually suggest to "iterate".
 
 Make the planning phase not require a group chat - while demonstratitive in how a manual group chat can be made, it is not necessary for the flow to run as intended.
 
+Include Git `diff` style revisioning, or actually *use* git. (See: [ChatDev](https://github.com/OpenBMB/ChatDev))
+
 Add logic to create working directory if it doesn't exist. Tie in with logic to select which project to continue working on based on directory names.
 
 Include automated testing and code execution during iterations - feed back error messages or Manager comments.
