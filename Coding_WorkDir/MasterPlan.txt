@@ -1,0 +1,5 @@
+1. Create a graphical user interface (GUI) for the app.
+2. Design and implement an analog clock face.
+3. Retrieve the current time from the system.
+4. Update the clock face to display the current time.
+5. Add fancy visual effects to enhance the appearance of the clock face.

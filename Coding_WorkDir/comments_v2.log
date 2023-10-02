@@ -1,0 +1,7 @@
+1. The code does not create a graphical user interface (GUI) for the app. It only creates a canvas to draw the clock face.
+2. The code does not implement an analog clock face. It only creates an oval shape for the clock face.
+3. The code does not retrieve the current time from the system.
+4. The code does not update the clock face to display the current time.
+5. The code does not add any fancy visual effects to enhance the appearance of the clock face.
+
+ITERATE
