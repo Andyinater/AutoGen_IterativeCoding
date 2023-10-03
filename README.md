@@ -4,7 +4,7 @@ This repository demonstrates how a simple iterative coding loop, with history an
 # Overview
 This project results from an extension of the paradigm demonstrated in [AutoGen_MemoryManager](https://github.com/Andyinater/AutoGen_MemoryManager), where allowing an agent to have a fixed, trustworthy memory relieves the cognitive burden that would otherwise be necessary to achieve the desired effect. The inspiration for this work comes from the author's personal struggles in achieving performant code from the AutoGen Examples for use-cases sufficiently different than those in the example. While in its current state this flow is able to achieve better results on cases that failed in the examples, this Repo should also serve as an example of a more generic code production workflow.
 
-(CONSIDER A DIAGRAM SHOWING THE BREAKDOWN OF STEPS)
+![Diagram depicting the program phases, including the interactions between user/agents, creation of files, and presentation of files to agents.](/flow.png)
 
 Currently this project only works to produce python code. With some work, this can be adapted.
 
