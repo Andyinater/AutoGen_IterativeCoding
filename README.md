@@ -200,8 +200,6 @@ Add logic to create working directory if it doesn't exist. Tie in with logic to 
 
 Include automated testing and code execution during iterations – feed back error messages or Manager comments.
 
-Write the latest review comments to a text file with similar versioning as the scripts - allow resumption with last comments brought in as well.
-
 
 # Future Work
 
