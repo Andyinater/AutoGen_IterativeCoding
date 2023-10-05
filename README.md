@@ -7,6 +7,10 @@ This project results from an extension of the paradigm demonstrated in [AutoGen_
 Currently this project only works to produce python code. With some work, this can be adapted.
 
 # How it Works
+
+> [!NOTE]
+> Documentation is out of date - there have been significant changes to the code. However, the method presented is still representative.
+
 The program runs in two phases: the Planning Phase, and the Iteration Phase.
 
 ![Diagram depicting the program phases, including the interactions between user/agents, creation of files, and presentation of files to agents.](/flow.png)
