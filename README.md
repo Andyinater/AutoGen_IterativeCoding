@@ -2,9 +2,9 @@
 This repository demonstrates how a simple iterative coding loop, with history and resume capability, can be implemented in the AutoGen Framework. 
 
 # Overview
-This project results from an extension of the paradigm demonstrated in [AutoGen_MemoryManager](https://github.com/Andyinater/AutoGen_MemoryManager), where allowing an agent to have a fixed, trustworthy memory relieves the cognitive load that would otherwise be necessary to achieve the desired effect. The inspiration for this work comes from the author's personal struggles in achieving performant code from the [AutoGen Examples](https://microsoft.github.io/autogen/docs/Examples/AutoGen-AgentChat/) for use cases sufficiently different than those in the example. While in its current state, this flow is able to achieve better results on cases that failed in the examples, this repo should also serve as an example of a more generic code production workflow.
+This project results from an extension of the paradigm demonstrated in early versions of [AutoGen_MemoryManager](https://github.com/Andyinater/AutoGen_MemoryManager), where allowing an agent to have a fixed, trustworthy memory relieves the cognitive burden required to achieve the desired effect. This work is inspired by the author's personal struggles in achieving performant code when applying the [AutoGen Examples](https://microsoft.github.io/autogen/docs/Examples/AutoGen-AgentChat/) to sufficiently different use cases. While this flow can achieve more performant code where the AutoGen Examples failed, it also serves as an example of a more generic code production workflow from which to build upon.
 
-Currently this project only works to produce python code. With some work, this can be adapted.
+Currently, this project can only produce Python code. With some work, this can be adapted.
 
 # How it Works
 
