@@ -2,16 +2,17 @@
 This repository demonstrates how a simple iterative coding loop, with history and resume capability, can be implemented in the AutoGen Framework. 
 
 # Overview
-This project results from an extension of the paradigm demonstrated in early versions of [AutoGen_MemoryManager](https://github.com/Andyinater/AutoGen_MemoryManager), where allowing an agent to have a fixed, trustworthy memory relieves the cognitive burden required to achieve the desired effect. This work is inspired by the author's personal struggles in achieving performant code when applying the [AutoGen Examples](https://microsoft.github.io/autogen/docs/Examples/AutoGen-AgentChat/) to sufficiently different use cases. While this flow can achieve more performant code where the AutoGen Examples failed, it also serves as an example of a more generic code production workflow from which to build upon.
+This project results from an extension of the paradigm demonstrated in early versions of [AutoGen_MemoryManager](https://github.com/Andyinater/AutoGen_MemoryManager), where allowing an agent to have a fixed, trustworthy memory relieves the cognitive burden required to achieve the desired effect. This work is inspired by the author's personal struggles in achieving performant code when applying the [AutoGen examples](https://microsoft.github.io/autogen/docs/Examples/AutoGen-AgentChat/) to sufficiently different use cases. While this flow can achieve more performant code where the AutoGen examples failed, this repo's primary function is to provide an example of a more generic code production workflow.
 
 Currently, this project can only produce Python code. With some work, this can be adapted.
 
 # How it Works
 
-> [!NOTE]
-> Documentation is out of date - there have been significant changes to the code. However, the method presented is still representative.
+* Writing and reading information outside of the conversation's context window lets us clear the window and reduce token usage – without losing valuable context for agents.
+* Creating a project plan and presenting it to agents on every iteration keeps the scope focused.
+* Presenting only the latest version of code and comments prevents agents from getting 'distracted' by previously faulty code or now-irrelevant comments.
 
-The program runs in two phases: the Planning Phase, and the Iteration Phase.
+The program consists of two phases. In the **planning phase**, a user's request results in a detailed plan for a Python project. In the **iteration phase**, the Python script is created and improved over several code-and-review cycles. 
 
 ![Diagram depicting the program phases, including the interactions between user/agents, creation of files, and presentation of files to agents.](/flow.png)
 
