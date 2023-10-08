@@ -25,30 +25,34 @@ Here the Manager can request the Python app they would like:
 
 >Make me a python app that displays the current time on an analog clock face.
 
-The Planner will then create a list of functional requirements that define the successful completion of the task. If the Manager deems the plan sufficient, they can direct the plan to be saved. The plan will be saved in the working directory.
+The Manager is also asked to provide a name for the project, which will be used to create a new project folder in the working directory.
 
-This concludes the planning phase.
+The Planner then creates a list of functional requirements that define the successful completion of the task. If the Manager is not happy with the plan, they can converse with the Planner to edit the plan. Once the Manager deems the plan sufficient, they can direct the plan to be saved. The plan will be saved in the project folder.
+
+This concludes the planning phase. The iteration phase begins immediately after exiting the conversation with the Planner.
 
 ## Iteration Phase
-The iteration phase consists of individual conversations between the Manager and one of two agents: the **Coder** or the **Reviewer**.
+The iteration phase consists of individual conversations between the Manager and one of two assistants: the **Coder** or the **Reviewer**.
 
 ### Iteration 0
-If coming directly from the planning phase, the iteration phase will begin with the Coder producing the first attempt at satisfying the plan. 
+If coming directly from the planning phase, the iteration phase begins with the Coder's first attempt at satisfying the plan. 
 
-The Coder's output will be recorded to a Python script file in the working directory, starting at `script_v1.py`.
+The Coder is presented with the plan, and its output is recorded to a Python script file in the project folder, starting at `script_v1.py`.
 
-The Reviewer will then be presented with the plan and the content of the most recent script, and is asked to evaluate the code and produce a list of criticisms/comments to be used to guide the next iteration.
+The Reviewer is then presented with the plan and the v1 script. It is asked to evaluate the code and produce a list of criticisms/comments the Coder can use to guide the next iteration. The list is recorded to a `.txt` file in the project folder, starting at `comments_v1.py`.
 
 The Manager can also test the code if desired and provide feedback to the Reviewer or Coder.
 
-### Iteration n
+### Iteration _n_
 After the first iteration, the main iterative loop begins.
 
-The Coder will be presented with the plan, the latest code iteration, and the latest Reviewer comments. They will then produce another iteration of the code, attempting to resolve the Reviewer comments while also adhering to the plan.
+The Coder is presented with the plan, the latest script (`script_v(n-1).py`), and the latest comments (`comments_v(n-1).py`). It produces another iteration of the code, attempting to resolve the Reviewer comments while also adhering to the plan. The new script file's version number will increment by one, from `script_v(n-1).py` to `script_vn.py`.
 
-The Reviewer will then be presented with the plan and the content of the most recent script, and is asked to evaluate the code and produce a list of criticisms/comments to be used to guide the next iteration.
+The Reviewer is then presented with the plan and the latest script (`script_vn.py`). It is asked to evaluate the code and produce a list of criticisms/comments the Coder can use to guide the next iteration. The new comment file's version number will increment by one, from `comments_v(n-1).py` to `comments_vn.py`.
 
 The Manager can also test the code if desired and provide feedback to the Reviewer or Coder.
+
+The user can end the program at any time when they are happy with the latest script.
 
 # Getting Started
 
