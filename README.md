@@ -8,7 +8,7 @@ Currently, this project can only produce Python code. With some work, this can b
 
 # How it Works
 
-* Writing and reading information outside of the conversation's context window lets the user clear the window and reduce token usage – without losing valuable context for agents.
+* Writing and reading information outside of the conversation's context window lets the user reset the window and reduce token usage – without losing valuable context for agents.
 * Creating a project plan and presenting it to agents on every iteration keeps the scope focused.
 * Presenting only the latest version of code and comments prevents agents from getting 'distracted' by previously faulty code or now-irrelevant comments.
 
@@ -66,19 +66,19 @@ Also ensure the file `AndyTools.py` is in the same directory as `IterativeCoding
 
 ## Starting a Fresh Project
 
-To start a fresh project, the `working_dir` should not contain any files.
+Ensure both `main.py` and `IterativeTools.py` are in your working directory. 
 
-Start the program with `python IterativeCoding.py`.
+Start the program with `python main.py`. The program checks if you have a `IterCode_Projects` folder in your working directory. If it does not find one, it will create one. All projects will be saved in subfolders within the `IterCode_Projects` folder.
 
 ### Planning the Project
 
 The planning phase begins when you enter a request for a Python creation.
 > Make a python app that writes the current time to an analog clock.
 
-Press `Enter` to continue, then enter a project name. Because this is used to name the project subfolder in the working directory, it must follow standard directory naming rules.
+Press **Enter** to continue, then enter a project name. Because this is used to name the project folder, it must follow standard directory naming rules.
 > AnalogClock
 
-Press `Enter` to begin the conversation with the Planner. It takes the request and produce an initial plan:
+Press **Enter** to begin the conversation with the Planner. It takes the request and produce an initial plan:
 
 ```
 Plan:
@@ -87,113 +87,37 @@ Plan:
 3. Implement a function to convert the current time into the corresponding positions of the clock hands.
 4. Update the GUI to display the clock hands at the correct positions based on the current time.
 5. Continuously update the clock display to show the current time in real-time.
----------------------------------------------------------------------------------
-Who speaks next:Manager
-```
-If the plan misses specific features or has any other issues, you can tell the Planner what needs to be changed, and it will update the plan.
-
-Once the Planner returns an acceptable plan, enter `sounds good`. The Planner will make a function call to write the plan to the project folder; press `Enter` to auto-reply and execute the function call. The Planner provides confirmation when the call is complete.
-
-A complete planning phase will look similar to this:
-
-```
-What task do you ask? Type it below:
-Make a python app that writes the current time to an analog clock
-←[33mmanager←[0m (to chat_manager):
-
-Make a python app that writes the current time to an analog clock
-
---------------------------------------------------------------------------------
-Who speaks next:planner
-←[33mplanner←[0m (to chat_manager):
-
-Plan:
-1. Create a graphical user interface (GUI) for the analog clock.
-2. Implement a function to retrieve the current time.
-3. Implement a function to convert the current time into the corresponding positions of the clock hands.
-4. Update the GUI to display the clock hands at the correct positions based on the current time.
-5. Continuously update the clock display to show the current time in real-time.
-
---------------------------------------------------------------------------------
-Who speaks next:manager
-Provide feedback to chat_manager. Press enter to skip and use auto-reply, or type 'exit' to end the conversation: Can you make the hour hand pink too?
-←[33mmanager←[0m (to chat_manager):
-
-Can you make the hour hand pink too?
-
---------------------------------------------------------------------------------
-Who speaks next:planner
-←[33mplanner←[0m (to chat_manager):
-
-Adjusted Plan:
-1. Create a graphical user interface (GUI) for the analog clock.
-2. Implement a function to retrieve the current time.
-3. Implement a function to convert the current time into the corresponding positions of the clock hands.
-4. Update the GUI to display the clock hands at the correct positions based on the current time.
-5. Adjust the color of the hour hand to pink.
-6. Continuously update the clock display to show the current time in real-time.
-
---------------------------------------------------------------------------------
-Who speaks next:manager
-Provide feedback to chat_manager. Press enter to skip and use auto-reply, or type 'exit' to end the conversation: sounds good
-←[33mmanager←[0m (to chat_manager):
-
-sounds good
-
---------------------------------------------------------------------------------
-Who speaks next:recorder
-←[33mrecorder←[0m (to chat_manager):
-
-←[32m***** Suggested function Call: write_settled_plan *****←[0m
-Arguments:
-{
-  "the_plan": "1. Create a graphical user interface (GUI) for the analog clock.\n2. Implement a function to retrieve the current time.\n3. Implement a function to convert the current time into the corresponding positions of the clock hands.\n4. Update the GUI to display the clock hands at the correct positions based on the current time.\n5. Adjust the color of the hour hand to pink.\n6. Continuously update the clock display to show the current time in real-time."
-}
-←[32m*******************************************************←[0m
-
---------------------------------------------------------------------------------
-Who speaks next:manager
-Provide feedback to chat_manager. Press enter to skip and use auto-reply, or type 'exit' to end the conversation:
-←[31m
->>>>>>>> NO HUMAN INPUT RECEIVED.←[0m
-←[31m
->>>>>>>> USING AUTO REPLY...←[0m
-←[35m
->>>>>>>> EXECUTING FUNCTION write_settled_plan...←[0m
-←[33mmanager←[0m (to chat_manager):
-
-←[32m***** Response from calling function "write_settled_plan" *****←[0m
-None
-←[32m***************************************************************←[0m
-
---------------------------------------------------------------------------------
-Who speaks next:manager
-Provide feedback to chat_manager. Press enter to skip and use auto-reply, or type 'exit' to end the conversation: exit
 ```
 
-At this point the terminal should be released. The iteration phase can now begin.
+If the plan misses specific features or has any other issues, you (as the Manager) can tell the Planner what needs to be changed. It will return an updated plan.
 
-## Iterating a Project
+Once the Planner returns an acceptable plan, enter `sounds good`. The Planner will make a function call to write the plan to the project folder; press **Enter** to auto-reply and execute the function call. The Planner provides confirmation when the call is complete.
 
-The iteration phase runs the same whether starting the iteration phase directly after planning or when resuming it after stopping a previous run.
+Enter `exit` to end the conversation with the Planner. The first iteration phase (iteration 0) will begin immediately.
 
-Begin the iteration phase by calling the main script again: `python IterativeCoding.py`
+## Iterating Through Code-Review Cycles
+All iterations start with a conversation between you (as the Manager) and the Coder.  
 
-The user can continually enter `exit` as the feedback to let the iterations run without additional input. 
+The saved plan is presented to the Coder. If there are existing scripts or comments in the project folder, the latest versions of each are also presented. The Coder then writes code to the console. Enter `exit` to end the conversation with the Coder and execute a function call to write the code to a new `script_vn.py` file in the project folder. 
 
-The user can provide feedback/direction on the process to either the Coder or the Reviewer, although this functionality has not been thoroughly tested.
+A conversation between the Manager and the Reviewer begins immediately. The saved plan and latest version of the script are presented to the Reviewer. If there are existing comments in the project folder, the latest version is also presented. The Reviewer then writes comments to the console. Enter `exit` to end the conversation with the Review and execute a function call to write the comments to a new `comments_vn.txt` file in the project folder. 
 
-The iteration will begin with a chat with the Coder, passing in the plan, and if not the first iteration, the last code iteration and the last review comments as well for context.
+The next loop starts immediately with a new conversation between the Manager and the Coder.
 
-Replying `exit` to the Coder will result in a function call to format and write the Coder's last message to a script file with incrementing version numbers.
+End the program at any time by terminating it. 
 
-After this, the Reviewer will be presented with the plan and the latest code and be asked to make comments/criticisms on the code direction. If it concludes another iteration is required, it will end with `ITERATE`. If it concludes testing is required, it will end with `TEST`.
-
-Replying `exit` to the Reviewer will end the current iteration. If `n_code_iterations` has not been exceeded, another iteration will begin by starting a chat with the Coder, passing in the plan, the last code iteration, and the last code review comments as context.
+>[!IMPORTANT]
+>Remember that code or comments shown in the console window are only written to the project folder after a function call. Review the latest files in your working directory before terminating the program.
 
 ## Testing an Iteration
 
-The user is able to run any script iterations in the `working_dir` while the iterative process is running. Feedback from the code execution can be provided by the user to either the Coder or the Reviewer to incorporate into the program.
+You can run the scripts written to the project folder while in the iteration phase. Instead of entering `exit` to end the conversation and move to the next agent, you can provide feedback directly to the Coder or Reviewer. They will return updated code or comments. Enter `exit` when you are ready to continue.
+
+## Continuing a Project
+
+When re-running `main.py`, the program checks for existing projects in the `IterCode_Projects` folder. If it finds existing projects, you will be asked if you want to start a new project or continue an existing project. 
+
+If you continue an existing project, an iteration will begin immediately, with the plan, latest script, and latest comments presented to the Coder.
 
 # Known Issues
 
