@@ -8,7 +8,7 @@ Currently, this project can only produce Python code. With some work, this can b
 
 # How it Works
 
-* Writing and reading information outside of the conversation's context window lets us clear the window and reduce token usage – without losing valuable context for agents.
+* Writing and reading information outside of the conversation's context window lets the user clear the window and reduce token usage – without losing valuable context for agents.
 * Creating a project plan and presenting it to agents on every iteration keeps the scope focused.
 * Presenting only the latest version of code and comments prevents agents from getting 'distracted' by previously faulty code or now-irrelevant comments.
 
@@ -17,25 +17,25 @@ The program consists of two phases. In the **planning phase**, a user's request 
 ![Diagram depicting the program phases, including the interactions between user/agents, creation of files, and presentation of files to agents.](/flow.png)
 
 ## Planning Phase
-The Planning Phase consists of a chat between the human user (Manager) and an AI Planner assistant (Planner). The Manager is first prompted:
+The planning phase consists of a conversation between the human user (**Manager**) and an AI planner assistant (**Planner**). The Manager is first prompted:
 
->What python creation would you like? Type below:
+>What Python creation would you like? Type below:
 
-Here the Manager can request the python app they would like:
+Here the Manager can request the Python app they would like:
 
 >Make me a python app that displays the current time on an analog clock face.
 
-The Planner will then create a list of functional requirements that define a successful completion of the task. If the Manager deems the plan sufficient, they can direct the plan to be saved. The plan will be saved in the working directory.
+The Planner will then create a list of functional requirements that define the successful completion of the task. If the Manager deems the plan sufficient, they can direct the plan to be saved. The plan will be saved in the working directory.
 
-This concludes the Planning Phase.
+This concludes the planning phase.
 
 ## Iteration Phase
-The Iteration Phase consists of individual chats between the Manager and either the Coder or the Reviewer.
+The iteration phase consists of individual conversations between the Manager and one of two agents: the **Coder** or the **Reviewer**.
 
 ### Iteration 0
-If coming directly from the Planning Phase, the Iteration Phase will begin with the Coder producing the first attempt at satisfying the plan. 
+If coming directly from the planning phase, the iteration phase will begin with the Coder producing the first attempt at satisfying the plan. 
 
-The Coder's output will be recorded to a python script file in the working directory, starting at `script_v1.py`.
+The Coder's output will be recorded to a Python script file in the working directory, starting at `script_v1.py`.
 
 The Reviewer will then be presented with the plan and the content of the most recent script, and is asked to evaluate the code and produce a list of criticisms/comments to be used to guide the next iteration.
 
@@ -54,7 +54,7 @@ The Manager can also test the code if desired and provide feedback to the Review
 
 The author assumes you have [installed AutoGen](https://github.com/microsoft/autogen#installation) and have it running on your system. 
 
-## Preparing the Work Space
+## Preparing the Workspace
 
 Before you begin, be sure the directory defined in `working_dir` exists in the active directory – this is where the plan will be stored, as well as all script iterations.
 
@@ -204,7 +204,6 @@ Include Git `diff` style revisioning, or actually *use* Git. (See: [ChatDev](htt
 Add logic to create working directory if it doesn't exist. Tie in with logic to select which project to continue working on based on directory names.
 
 Include automated testing and code execution during iterations – feed back error messages or Manager comments.
-
 
 # Future Work
 
