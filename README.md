@@ -46,11 +46,13 @@ The Manager can also test the code if desired and provide feedback to the Review
 ### Iteration _n_
 After the first iteration, the main iterative loop begins.
 
-The Coder is presented with the plan, the latest script (`script_v(n-1).py`), and the latest comments (`comments_v(n-1).py`). It produces another iteration of the code, attempting to resolve the Reviewer comments while also adhering to the plan. The new script file's version number will increment by one, from `script_v(n-1).py` to `script_vn.py`.
+The Coder is presented with the plan, the latest script `script_v1.py`, and the latest comments `comments_v1.py`. It produces another iteration of the code, attempting to resolve the Reviewer comments while also adhering to the plan. The new script file will have its version number incremented by 1, resulting in `script_v2.py`.
 
-The Reviewer is then presented with the plan and the latest script (`script_vn.py`). It is asked to evaluate the code and produce a list of criticisms/comments the Coder can use to guide the next iteration. The new comment file's version number will increment by one, from `comments_v(n-1).py` to `comments_vn.py`.
+The Reviewer is then presented with the plan and the latest script `script_v2.py`. It is asked to evaluate the code and produce a list of criticisms/comments the Coder can use to guide the next iteration. The new comment file will have its version number incremented by 1, resulting in `comments_v2.py`.
 
 The Manager can also test the code if desired and provide feedback to the Reviewer or Coder.
+
+The loop continues until some iteration _n_, when the user is happy with performance of the latest script.
 
 # Getting Started
 
