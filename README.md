@@ -52,47 +52,47 @@ The Reviewer is then presented with the plan and the latest script (`script_vn.p
 
 The Manager can also test the code if desired and provide feedback to the Reviewer or Coder.
 
-The user can end the program at any time when they are happy with the latest script.
-
 # Getting Started
 
 The author assumes you have [installed AutoGen](https://github.com/microsoft/autogen#installation) and have it running on your system. 
 
 ## Preparing the Workspace
 
-Before you begin, be sure the directory defined in `working_dir` exists in the active directory – this is where the plan will be stored, as well as all script iterations.
+Ensure the directory defined in `working_dir` exists in the active directory – this is where the plan will be stored, as well as all script iterations.
 
-Also, be sure the file `AndyTools.py` is in the same directory as `IterativeCoding.py` – this contains overridden AutoGen `GroupChat` and `GroupChatManager` classes to allow manual control of group chat speakers.
+Also ensure the file `AndyTools.py` is in the same directory as `IterativeCoding.py` – this contains overridden AutoGen `GroupChat` and `GroupChatManager` classes to allow manual control of group chat speakers.
 
 ## Starting a Fresh Project
 
-To start a fresh project, be sure the `working_dir` contains no files.
+To start a fresh project, the `working_dir` should not contain any files.
 
-Start the program with `python IterativeCoding.py`
+Start the program with `python IterativeCoding.py`.
 
-### Running the Planning Phase
+### Planning the Project
 
-The planning phase will begin with the user entering the desired application:
+The planning phase begins when you enter a request for a Python creation.
 > Make a python app that writes the current time to an analog clock.
 
-After hitting `Enter`, the user will be prompted to direct who speaks next:
-> Who speaks next: Planner
+Press `Enter` to continue, then enter a project name. Because this is used to name the project subfolder in the working directory, it must follow standard directory naming rules.
+> AnalogClock
 
-The user should enter `Planner` to allow the Planner to produce an initial plan:
->Plan:
->1. Create a graphical user interface (GUI) for the analog clock.
->2. Implement a function to retrieve the current time.
->3. Implement a function to convert the current time into the corresponding positions of the clock hands.
->4. Update the GUI to display the clock hands at the correct positions based on the current time.
->5. Continuously update the clock display to show the current time in real-time.
->---------------------------------------------------------------------------------
->Who speaks next:Manager
+Press `Enter` to begin the conversation with the Planner. It takes the request and produce an initial plan:
 
-After the Planner responds, the user should direct the Manager to speak next. If the user desires other features be included, or has any problems with the plan, they can tell the Planner what changes they desire. After this, the user should allow the Planner to speak again.
+```
+Plan:
+1. Create a graphical user interface (GUI) for the analog clock.
+2. Implement a function to retrieve the current time.
+3. Implement a function to convert the current time into the corresponding positions of the clock hands.
+4. Update the GUI to display the clock hands at the correct positions based on the current time.
+5. Continuously update the clock display to show the current time in real-time.
+---------------------------------------------------------------------------------
+Who speaks next:Manager
+```
+If the plan misses specific features or has any other issues, you can tell the Planner what needs to be changed, and it will update the plan.
 
-Once the Planner returns a plan that is acceptable, the user should say "sounds good" through the Manager. The user should then direct the `recorder` to speak next. The recorder will make a function call to write the plan to the working directory, finalizing the application requirements. The `Manager` must be used to execute the function call by sending a blank response (auto-reply). The Manager must then exit the conversation to conclude the planning phase. 
+Once the Planner returns an acceptable plan, enter `sounds good`. The Planner will make a function call to write the plan to the project folder; press `Enter` to auto-reply and execute the function call. The Planner provides confirmation when the call is complete.
 
-A full planning phase will run something like this:
+A complete planning phase will look similar to this:
 
 ```
 What task do you ask? Type it below:
@@ -169,13 +169,13 @@ Who speaks next:manager
 Provide feedback to chat_manager. Press enter to skip and use auto-reply, or type 'exit' to end the conversation: exit
 ```
 
-At this point the terminal should be released. The Iteration Phase can now begin.
+At this point the terminal should be released. The iteration phase can now begin.
 
 ## Iterating a Project
 
-The Iteration Phase runs the same whether starting the Iteration Phase directly after planning or when resuming it after stopping a previous run.
+The iteration phase runs the same whether starting the iteration phase directly after planning or when resuming it after stopping a previous run.
 
-Begin the Iteration Phase by calling the main script again: `python IterativeCoding.py`
+Begin the iteration phase by calling the main script again: `python IterativeCoding.py`
 
 The user can continually enter `exit` as the feedback to let the iterations run without additional input. 
 
