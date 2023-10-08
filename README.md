@@ -17,15 +17,9 @@ The program consists of two phases. In the **planning phase**, a user's request 
 ![Diagram depicting the program phases, including the interactions between user/agents, creation of files, and presentation of files to agents.](/flow.png)
 
 ## Planning Phase
-The planning phase consists of a conversation between the human user (**Manager**) and an AI planner assistant (**Planner**). The Manager is first prompted:
+The planning phase consists of a conversation between the human user (**Manager**) and an AI planner assistant (**Planner**). 
 
->What Python creation would you like? Type below:
-
-Here the Manager can request the Python app they would like:
-
->Make me a python app that displays the current time on an analog clock face.
-
-The Manager is also asked to provide a name for the project, which will be used to create a new project folder in the working directory.
+The Manager is asked to request a Python creation, for example, "Make me a python app that displays the current time on an analog clock face." The Manager is also asked to provide a name for the project, which will be used to create a new project folder in the working directory.
 
 The Planner then creates a list of functional requirements that define the successful completion of the task. If the Manager is not happy with the plan, they can converse with the Planner to edit the plan. Once the Manager deems the plan sufficient, they can direct the plan to be saved. The plan will be saved in the project folder.
 
@@ -113,6 +107,8 @@ End the program at any time by terminating it.
 
 You can run the scripts written to the project folder while in the iteration phase. Instead of entering `exit` to end the conversation and move to the next agent, you can provide feedback directly to the Coder or Reviewer. They will return updated code or comments. Enter `exit` when you are ready to continue.
 
+For example, imagine you have asked for "an app that lets me play Tetris". After some iterations, the Reviewer may conclude that the code is performant and meets the requirements of the plan. However, when you test the script yourself, you realize the blocks are falling far too fast for a human to react to. You can tell the Reviewer this and they will revise their comments accordingly. You can then continue to the next iteration where the Coder will adjust the script to (hopefully!) solve the issue.
+
 ## Continuing a Project
 
 When re-running `main.py`, the program checks for existing projects in the `IterCode_Projects` folder. If it finds existing projects, you will be asked if you want to start a new project or continue an existing project. 
@@ -121,20 +117,6 @@ If you continue an existing project, an iteration will begin immediately, with t
 
 # Known Issues
 
-Sometimes the Reviewer will produce a 100+ point list of the same issue.
-
-Due to above issue, Reviewer may perpetually suggest to "iterate".
-
-# I Wish I Had Time To...
-
-Make the planning phase not require a group chat – while demonstrative in how a manual group chat can be made, it is not necessary for the flow to run as intended.
-
-Include Git `diff` style revisioning, or actually *use* Git. (See: [ChatDev](https://github.com/OpenBMB/ChatDev))
-
-Add logic to create working directory if it doesn't exist. Tie in with logic to select which project to continue working on based on directory names.
-
-Include automated testing and code execution during iterations – feed back error messages or Manager comments.
-
-# Future Work
-
-
+* Sometimes the Reviewer will produce a 100+ point list of the same issue.
+* Due to above issue, Reviewer may perpetually suggest to "iterate".
+* There is no code to exit the program, the user must terminate it outside of the console window.
